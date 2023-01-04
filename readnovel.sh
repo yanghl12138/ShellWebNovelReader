@@ -1,6 +1,18 @@
 #!/bin/bash
 
 echo "简易网络小说阅读器"
+# 书签目录
+bookmarkdir="~/.cache/readnovel/"
+mkdir -p ${bookmarkdir}
+lastreadmark=${bookmarkdir}last-read
+if [[ -f ${lastreadmark} ]]
+then
+	echo "-----------"
+	echo "上次阅读到："
+	cat ${lastreadmark}
+	echo "-----------"
+fi
+
 # 服务器信息
 serverurl="http://47.99.110.156/novel/"
 
@@ -38,6 +50,7 @@ do
 	chapter=$( cat /tmp/readnovel/meta.tmp | grep -Ee "^(${num} )")
 	echo  "${novelurl}/${chapter}"
 	echo "小说加载中……"
+	echo -e "${novelname} \"${chapter}\"" | tee ${lastreadmark}
 	sleep 1
 
 	# 加载小说，阅读
