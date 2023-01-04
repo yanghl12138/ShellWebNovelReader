@@ -2,9 +2,9 @@
 
 echo "简易网络小说阅读器"
 # 书签目录
-bookmarkdir="~/.cache/readnovel/"
+bookmarkdir="${HOME}/.cache/readnovel"
 mkdir -p ${bookmarkdir}
-lastreadmark=${bookmarkdir}last-read
+lastreadmark=${bookmarkdir}/last-read
 if [[ -f ${lastreadmark} ]]
 then
 	echo "-----------"
