@@ -14,7 +14,7 @@ then
 fi
 
 # 服务器信息
-serverurl="http://47.99.110.156/novel/"
+serverurl="http://118.140.206.140:56501/novel/"
 
 # 小说选择
 
