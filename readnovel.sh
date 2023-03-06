@@ -36,18 +36,18 @@ sleep 1
 # 小说章节的阅读与选择
 novelurl=${serverurl}${novelname}
 mkdir /tmp/readnovel/ -p
-METAFILE="/tmp/readnovel/meta.tmp"
+METAFILE="${bookmarkdir}/meta.tmp"
 wget -o /dev/null -O -  "${novelurl}/.meta" | sort -nk 1 > ${METAFILE}
 while true
 do
 	# 显示目录并选择
-	totalchapter=$( cat /tmp/readnovel/meta.tmp | wc -l )
+	totalchapter=$( cat ${METAFILE} | wc -l )
 	echo "总共的章节数为 $(( totalchapter ))，稍后将查看章节目录"
 	sleep 1
-	less /tmp/readnovel/meta.tmp
+	less ${METAFILE}
 	echo -n "选择章节（1~$(( totalchapter ))）: "
 	read num
-	chapter=$( cat /tmp/readnovel/meta.tmp | grep -Ee "^(${num} )")
+	chapter=$( cat ${METAFILE} | grep -Ee "^(${num} )")
 	echo  "${novelurl}/${chapter}"
 	echo "小说加载中……"
 	echo -e "${novelname} \"${chapter}\"" | tee ${lastreadmark}
