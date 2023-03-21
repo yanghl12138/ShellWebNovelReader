@@ -62,3 +62,6 @@
 ```bash
 bash ./readnovel.sh
 ```
+
+## 其他
+项目发布在[gitee](https://gitee.com/Leoyby/shell-network-novel-reader)，同步至[github](https://github.com/yanghl12138/ShellWebNovelReader)
